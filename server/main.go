@@ -20,7 +20,7 @@ type Server struct {
 func (s *Server) ListPerson(req *department.ListPersonRequest, srv department.DepartmentService_ListPersonServer) error {
 	file, err := os.Open("./data.csv")
 	if err != nil {
-		return fmt.Errorf("error on open", err)
+		return fmt.Errorf("error on open %+v", err)
 	}
 
 	scanner := bufio.NewScanner(file)
@@ -40,7 +40,7 @@ func (s *Server) ListPerson(req *department.ListPersonRequest, srv department.De
 				Income:       int32(income),
 				DepartmentId: int32(departmentId),
 			}); err != nil {
-				return fmt.Errorf("error on send %v", err)
+				return fmt.Errorf("error on send %+v", err)
 			}
 		}
 	}
